@@ -1,0 +1,132 @@
+\documentclass[10pt,a4paper]{ctexart}
+
+% -------- 页面与基础设置 --------
+\usepackage[left=1.35cm,right=1.35cm,top=1.35cm,bottom=1.25cm]{geometry}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{array}
+
+% -------- 颜色定义 --------
+\definecolor{iconblue}{RGB}{45,92,160}
+\definecolor{darkred}{RGB}{234,67,53}
+\definecolor{textgray}{RGB}{95,99,104}
+
+% -------- 标题格式 --------
+\titleformat{\section}
+  {\large\bfseries\color{iconblue}}
+  {}{0em}{}[\vspace{0.25ex}\titlerule]
+\titlespacing*{\section}{0pt}{1.6ex plus .3ex minus .2ex}{0.9ex}
+
+% -------- 列表与行距 --------
+\setstretch{1.08}
+\setlist[itemize]{leftmargin=1.4em,label=\textbullet,itemsep=2pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+\newcommand{\resumeItem}[1]{\item #1}
+\newcommand{\projectHeader}[4]{%
+  \noindent\textcolor{iconblue}{\textbf{#1}} \hfill \textcolor{iconblue}{\small #2}\\[-0.2ex]
+  {\small \textcolor{textgray}{#3 \hfill #4}}\vspace{0.2ex}
+}
+
+\begin{document}
+
+% ==================== 头部信息 ====================
+% 说明：如需替换照片/校徽，将图片分别命名为 photo.jpg 与 logo.png，放在 main.tex 同目录即可。
+\newcommand{\photoBox}{%
+  \IfFileExists{photo.jpg}{%
+    \includegraphics[width=2.55cm,height=3.15cm,keepaspectratio]{photo.jpg}%
+  }{%
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\parbox[c][3.15cm][c]{2.55cm}{\centering\small\textcolor{textgray}{个人照片}}}%
+  }%
+}
+
+\newcommand{\logoBox}{%
+  \IfFileExists{logo.png}{%
+    \includegraphics[width=2.80cm,height=2.80cm,keepaspectratio]{logo.png}%
+  }{%
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\parbox[c][2.80cm][c]{2.80cm}{\centering\small\textcolor{textgray}{学校校徽}}}%
+  }%
+}
+
+\noindent
+\begin{minipage}[c][3.20cm][c]{2.80cm}
+    \centering
+    \photoBox
+\end{minipage}
+\hfill
+\begin{minipage}[c][3.20cm][c]{11.20cm}
+    {\zihao{3}\bfseries 姓名}\\[0.70ex]
+    {\small 生日：YYYY-MM \quad | \quad 性别：男/女}\\[0.35ex]
+    {\small 民族：XX族 \quad | \quad 政治面貌：群众/共青团员/中共党员}\\[0.35ex]
+    {\small \faPhone\ 1XXXXXXXXXX \quad \faEnvelope\ \href{mailto:yourname@example.com}{yourname@example.com}}
+\end{minipage}
+\hfill
+\begin{minipage}[c][3.20cm][c]{3.00cm}
+    \centering
+    \logoBox
+\end{minipage}
+\vspace{0.4ex}
+
+% ==================== 教育背景 ====================
+\section*{\faGraduationCap\ 教育背景}
+\textbf{学校名称} \quad 学院名称 \quad 专业名称（本科/硕士/博士） \hfill YYYY.MM--YYYY.MM\\[-0.1ex]
+\textbf{GPA：}X.XX/X.X \quad \textbf{加权平均分：}XX.XX/100 \quad \textbf{专业排名：}X/XX \quad \textbf{英语：}CET-4(XXX)，CET-6(XXX)\\[-0.1ex]
+\textbf{主修课程：}课程一(XX)、课程二(XX)、课程三(XX)、课程四(XX)、课程五(XX)、课程六(XX)
+
+% ==================== 科研经历 ====================
+\section*{\faCode\ 科研经历}
+\projectHeader{项目一：面向复杂任务的多模态智能系统研究}{YYYY.MM--YYYY.MM}{项目角色 | 投稿/发表/在研情况}{实验室/课题组名称}
+\begin{itemize}
+    \resumeItem{围绕复杂场景下多模态信息理解与推理效率不足的问题，提出基于\textbf{统一表示学习}的建模思路，将文本、图像或结构化信息映射到一致的语义空间，以提升模型对跨模态信息的融合能力。}
+    \resumeItem{设计\textbf{两阶段训练或对齐流程}：第一阶段构建稳定的特征抽取与表示接口，第二阶段引入任务相关监督信号进行端到端优化，使模型能够在下游任务中保持较好的泛化能力。}
+    \resumeItem{基于主流深度学习框架完成模型训练、推理与评测代码实现，支持多卡训练、混合精度推理和批量化评估；根据实验需求完成数据清洗、格式转换、指标统计与可视化分析。}
+    \resumeItem{在多个公开基准或自建数据集上完成系统实验，与若干代表性方法进行对比；实验结果表明，该方法在准确率、稳定性或推理效率方面取得了具有竞争力的表现。}
+\end{itemize}
+
+\vspace{0.5ex}
+\projectHeader{项目二：大模型推理加速与资源高效优化}{YYYY.MM--YYYY.MM}{研究实习生/主要成员}{单位或实验室名称}
+\begin{itemize}
+    \resumeItem{针对大模型在长上下文或高分辨率输入场景下的显存占用与计算开销问题，提出\textbf{免训练/轻量训练}的高效推理优化框架，在尽量保持模型性能的同时降低部署成本。}
+    \resumeItem{构建面向输入冗余性的筛选策略，通过相似度度量、重要性评分或分层选择机制保留关键信息，缓解全局筛选容易忽略长程内容覆盖的问题。}
+    \resumeItem{结合注意力分布、隐藏状态、特征范数等信号设计重要性度量，并实现与主流推理后端兼容的优化模块，降低重要性估计与实际推理过程中的额外开销。}
+    \resumeItem{在多个模型和评测基准上进行系统实验，统计性能、延迟、吞吐量和显存占用等指标；结果显示该方法能够在较低保留率或较小计算预算下维持较高任务性能。}
+\end{itemize}
+
+\vspace{0.5ex}
+\projectHeader{项目三：轻量级智能检测与端侧部署系统}{YYYY.MM--YYYY.MM}{核心开发/项目成员}{实验室/团队名称}
+\begin{itemize}
+    \resumeItem{面向实际应用场景中的实时检测需求，设计\textbf{轻量级神经网络模型}与完整数据处理流程，在保证识别性能的同时兼顾端侧设备的计算与存储限制。}
+    \resumeItem{构建包含数据采集、预处理、增强、训练与验证的完整实验管线；根据任务特点引入多尺度特征、时序信息或局部区域建模，以提升模型对复杂样本的鲁棒性。}
+    \resumeItem{完成模型压缩、格式转换与部署适配工作，支持 ONNX、移动端推理框架或其他实际部署环境，并对推理速度、资源占用和稳定性进行测试。}
+    \resumeItem{在测试集或真实场景中进行效果评估，核心指标达到项目预期；进一步分析失败案例并据此优化数据策略、模型结构与后处理流程。}
+\end{itemize}
+
+% ==================== 荣誉奖项 ====================
+\section*{\faTrophy\ 荣誉奖项}
+\begin{itemize}
+    \resumeItem{\textcolor{darkred}{\textbf{国家级/校级奖学金或荣誉称号}} \hfill YYYY.MM}
+    \resumeItem{学科竞赛/创新创业竞赛奖项 \hfill YYYY.MM}
+    \resumeItem{数学建模/程序设计/科研训练类奖项 \hfill YYYY.MM}
+    \resumeItem{校级优秀学生/优秀团员/专项奖学金 \hfill YYYY.MM}
+    \resumeItem{其他代表性荣誉或资格认证 \hfill YYYY.MM}
+\end{itemize}
+
+% ==================== 技能特长 ====================
+\section*{\faWrench\ 技能特长}
+\begin{itemize}[parsep=0.2ex]
+    \item \textbf{专业技能}: Python, C/C++, Java, PyTorch, Linux, Git
+    \item \textbf{科研技能}: 熟悉深度学习训练框架、模型推理加速工具、多模态评估框架与常用数据处理流程
+    \item \textbf{学生工作与特长}: 学生组织/社团职务、志愿服务经历、体育/艺术/语言等个人特长
+\end{itemize}
+
+\end{document}
